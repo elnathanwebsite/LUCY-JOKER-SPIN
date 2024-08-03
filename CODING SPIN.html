@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background: url('https://i.pinimg.com/736x/79/39/e9/7939e9cc060dc5ed652515f9e9a1bd4c.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .header {
+      text-align: center;
+      font-size: 3em;
+      padding: 50px 0;
+    }
+
+    .body {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .box {
+      width: 200px;
+      height: 400px;
+      background-color: #1b5e1f00;
+      margin: 10px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .button-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .button-container button {
+      margin: 20px;
+      padding: 20px 40px;
+      font-size: 1.8em;
+      cursor: pointer;
+      background-color: #530dc4;
+      border: none;
+      color: rgb(255, 255, 255);
+      border-radius: 100px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .button-container button:hover {
+      background-color: #fb00ff;
+      transform: scale(1.05);
+    }
+
+    .button-container button:active {
+      background-color: #397d3c;
+      transform: scale(0.95);
+    }
+
+    .button-container button:disabled {
+      background-color: #e0e0e0;
+      color: #9e9e9e;
+      cursor: not-allowed;
+    }
+
+    .footer {
+      background-color: #25045573;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 1.5em;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      margin: 10px;
+    }
+
+    .footer div {
+      font-family: 'Roboto', sans-serif;
+      color: #ffffff;
+    }
+
+    .credit {
+      text-align: center;
+      font-size: 3.3em;
+      margin: 20px 0;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .spin {
+      animation: spin 1s ease-in-out;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 600px) {
+      .header {
+        font-size: 2em;
+        padding: 20px 0;
+      }
+
+      .body {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer {
+        flex-direction: column;
+      }
+
+      .footer img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0,0.4);
+      padding-top: 60px;
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 300px;
+      border-radius: 10px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 10px;
+      background-color: #af4c4c;
+      border: none;
+      color: #fff;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-button:hover {
+      background-color: #fb00ff;
+    }
+    /* Existing CSS */
+  /* Add this to your existing CSS */
+  .logo {
+    color: #da102b; /* Gold color for YOURE LUCY */
+    font-size: 2.5em; /* Larger font size */
+  font-family: "Rock Salt", cursive;
+  font-weight: 400;
+  font-style: normal;
+  text-shadow: 2px 2px 5px rgb(0, 0, 0); /* Horizontal offset, Vertical offset, Blur radius, Color */
+}
+
+
+  .credit {
+    color: #ff0051; /* Gold color for YOURE CREDIT */
+    font-size: 2.5em; /* Adjust font size */
+   font-family: "Philosopher", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  text-shadow: 2px 2px 5px rgb(0, 0, 0);
+}
+
+
+  #credit {
+    color: #07ff07; /* LimeGreen color for credit amount */
+    text-shadow: 2px 2px 5px rgb(0, 0, 0);
+  }
+  /* Add styles for the Unlimited Spin button if needed */
+#unlimitedSpinButton {
+  background-color: #4CAF50; /* Green background for unlimited spin button */
+}
+
+#unlimitedSpinButton:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+/* Add styles for the Stop Spin button if needed */
+#stopSpinButton {
+  background-color: #0a36e5; /* Red background for stop spin button */
+}
+
+#stopSpinButton:hover {
+  background-color: #e53935; /* Darker red on hover */
+}
+  /* Your existing CSS here */
+    .drawer {
+      height: 0;
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      background-color: #f4f4f4;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding: 16px;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
+    }
+
+    .drawer.open {
+      height: 50%;
+    }
+
+    .drawer-content {
+      overflow-y: auto;
+      height: 100%;
+    }
+
+    .drawer-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .drawer-button {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .drawer-button:hover {
+      background-color: #0056b3;
+    }
+
+    .drawer-content h2 {
+      margin-top: 0;
+    }
+    .footer a {
+      color: rgb(18, 215, 48); /* Ubah warna link menjadi merah */
+      text-decoration: none; /* Menghilangkan garis bawah pada link */
+    }
+    .footer a:hover {
+      text-decoration: underline; /* Menambahkan garis bawah saat link dihover */
+    }
+</style>
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">LUCY</div>
+      <div class="logo">JOKER</div>
+      <div class="logo">SPIN</div>
+    </div>
+    <div class="body">
+      <div class="box"><img src="https://i.pinimg.com/736x/d2/78/32/d2783231628c476ba70b009c6075665e.jpg" alt="JOKER"></div>
+      <div class="box"><img src="https://i.pinimg.com/736x/1e/b0/cc/1eb0cc3942d4b3bf39c110aab6b84d8e.jpg" alt="Image 2"></div>
+      <div class="box"><img src="https://i.pinimg.com/736x/d6/78/44/d67844fb6fa8b080c39ad55b520a7e45.jpg" alt="Image 3"></div>
+      <div class="box"><img src="https://i.pinimg.com/736x/de/40/f5/de40f520c806183a7ced41a04c93e2b9.jpg" alt="Image 4"></div>
+    </div>
+    <div class="credit">
+      YOURE CREDIT: <span id="credit">10</span>
+    </div>
+    <div class="button-container">
+      <button id="spinButton">Spin</button>
+      <button id="playPauseButton">Play Music</button>
+      <button id="Deposit">10 SPIN</button>
+      <button id="topUpButton">Top Up</button>
+<button id="unlimitedSpinButton">Unlimited Spin</button>
+<button id="stopSpinButton">Stop Spin</button>
+
+
+    </div>
+    <div class="footer">
+      <div><img src="https://i.pinimg.com/736x/d2/78/32/d2783231628c476ba70b009c6075665e.jpg" alt="JOKER"><div>JOKER</div></div>
+      <div><img src="https://i.pinimg.com/736x/1e/b0/cc/1eb0cc3942d4b3bf39c110aab6b84d8e.jpg" alt="Image 2"><div>BLACK JOKER</div></div>
+      <div><img src="https://i.pinimg.com/736x/d6/78/44/d67844fb6fa8b080c39ad55b520a7e45.jpg" alt="Image 3"><div>UNICORN</div></div>
+      <div><img src="https://i.pinimg.com/736x/de/40/f5/de40f520c806183a7ced41a04c93e2b9.jpg" alt="Image 4"><div>SKULL</div></div>
+    </div>
+  </div>
+
+  <!-- Background music -->
+  <audio id="backgroundMusic" autoplay loop>
+    <source src="JOKER SOUND.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Top Up Modal -->
+  <div id="topUpModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <form id="topUpForm">
+        <div class="form-group">
+          <label for="topUpAmount">Top Up Amount:</label>
+          <input type="number" id="topUpAmount" name="topUpAmount" max="50" required>
+        </div>
+        <button type="submit" class="submit-button">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Info Cara Main Drawer -->
+  <div id="infoDrawer" class="drawer">
+    <span class="drawer-close">&times;</span>
+    <div class="drawer-content">
+      <h2>Info Cara Main</h2>
+      <p>1. Tekan tombol "Spin" untuk memutar slot machine.</p>
+      <p>2. Gunakan tombol "10 X spin untuk hoki 10 x spin" untuk menambah kredit.</p>
+      <p>3. Klik tombol "Top Up" untuk mengisi ulang kredit dengan jumlah yang diinginkan TERBATAS HINGGA 50 POINT SAJA.</p>
+      <p>4. Gunakan tombol "Unlimited Spin" untuk memutar slot machine secara otomatis hingga kredit habis.</p>
+      <p>5. Tekan tombol "Stop Spin" untuk menghentikan putaran otomatis.</p>
+      <p>Spin Hingga Muncul 4 gambar kartu yang sama.</p>
+      <p>kartu Joker 5 point.</p>
+      <p>Kartu Black Joker 5 Point.</p>
+      <p>Kartu Unicorn 5 Point.</p>
+      <p>Kartu Skull 5 Point.</p>
+      <p>Developer web geme by Muhammad Arifan Alfahri CEO BY ETHAN EL NATHAN</p>
+    </div>
+  </div>
+
+  <!-- Button to open drawer -->
+  <button id="infoButton" class="drawer-button">Info Cara Main</button>
+
+  <!-- Top Up Modal -->
+  <div id="topUpModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <form id="topUpForm">
+        <div class="form-group">
+          <label for="topUpAmount">Top Up Amount:</label>
+          <input type="number" id="topUpAmount" name="topUpAmount" max="50" required>
+        </div>
+        <button type="submit" class="submit-button">Submit</button>
+      </form>
+    </div>
+  </div>
+ </div>
+    <div class="footer">
+      <img src="https://i.pinimg.com/736x/79/39/e9/7939e9cc060dc5ed652515f9e9a1bd4c.jpg" alt="Footer Image">
+      <div>Thank you for playing!</div>
+      <img src="https://i.pinimg.com/736x/b0/ea/b2/b0eab210789378c9bb0e3060e8a45c69.jpg" alt="Footer Image">
+    </div>
+    <div class="footer">
+      <a href="https://tetrisgeme.vercel.app/" target="_blank">Tetris Game</a> | <a href="https://elnathanshopinstagram.vercel.app/" target="_blank">Elnathan Shop Instagram</a>
+    </div>
+  </div>
+  <script>
+    let unlimitedSpinInterval;
+
+    function spinSlots() {
+      const creditElement = document.getElementById('credit');
+      let credit = parseInt(creditElement.innerText, 10);
+
+      if (credit <= 0) {
+        alert('POINT CREDIT LU ABIS BREE, DEPO DULU BRE BIAR BISA LANJUT !');
+        return;
+      }
+
+      credit -= 1; // Deduct 1 credit for spinning
+      creditElement.innerText = credit;
+
+      const imageSets = [
+        [
+          'https://i.pinimg.com/736x/d2/78/32/d2783231628c476ba70b009c6075665e.jpg',
+          'https://i.pinimg.com/736x/1e/b0/cc/1eb0cc3942d4b3bf39c110aab6b84d8e.jpg',
+          'https://i.pinimg.com/736x/d6/78/44/d67844fb6fa8b080c39ad55b520a7e45.jpg',
+          'https://i.pinimg.com/736x/de/40/f5/de40f520c806183a7ced41a04c93e2b9.jpg'
+        ]
+      ];
+
+      const boxes = document.querySelectorAll('.box img');
+
+      boxes.forEach((img) => {
+        img.classList.add('spin');
+      });
+
+      setTimeout(() => {
+        const sameImage = Math.random() < 0.30; // 50% chance
+        const randomImageSet = imageSets[0];
+
+        if (sameImage) {
+          const randomImage = randomImageSet[Math.floor(Math.random() * randomImageSet.length)];
+          boxes.forEach((img) => {
+            img.src = randomImage;
+          });
+        } else {
+          boxes.forEach((img) => {
+            const randomImage = randomImageSet[Math.floor(Math.random() * randomImageSet.length)];
+            img.src = randomImage;
+          });
+        }
+
+        boxes.forEach((img) => {
+          img.classList.remove('spin');
+        });
+
+        const firstImageSrc = boxes[0].src;
+        const allSame = Array.from(boxes).every(img => img.src === firstImageSrc);
+
+        if (allSame) {
+          credit += 10; // Add 5 credit points if all images are the same
+          creditElement.innerText = credit;
+        }
+      }, 1000); // Matches the duration of the spin animation
+    }
+
+    document.getElementById('spinButton').addEventListener('click', spinSlots);
+
+    document.getElementById('Deposit').addEventListener('click', function() {
+      let count = 0;
+      const interval = setInterval(() => {
+        if (count < 10) {
+          spinSlots();
+          count++;
+        } else {
+          clearInterval(interval);
+        }
+      }, 2000); // Delay between spins
+    });
+
+    const audio = document.getElementById('backgroundMusic');
+    const playPauseButton = document.getElementById('playPauseButton');
+
+    playPauseButton.addEventListener('click', function() {
+      if (audio.paused) {
+        audio.play();
+        playPauseButton.innerText = 'Pause Music';
+      } else {
+        audio.pause();
+        playPauseButton.innerText = 'Play Music';
+      }
+    });
+
+    const topUpModal = document.getElementById('topUpModal');
+    const topUpButton = document.getElementById('topUpButton');
+    const closeModal = document.getElementsByClassName('close')[0];
+    const topUpForm = document.getElementById('topUpForm');
+
+    topUpButton.addEventListener('click', function() {
+      topUpModal.style.display = 'block';
+    });
+
+    closeModal.addEventListener('click', function() {
+      topUpModal.style.display = 'none';
+    });
+
+    window.addEventListener('click', function(event) {
+      if (event.target == topUpModal) {
+        topUpModal.style.display = 'none';
+      }
+    });
+
+    topUpForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const topUpAmount = parseInt(document.getElementById('topUpAmount').value, 10);
+
+      if (topUpAmount > 50) {
+        alert('Maximum top-up amount is 50.');
+        return;
+      }
+
+      const creditElement = document.getElementById('credit');
+      let credit = parseInt(creditElement.innerText, 10);
+
+      credit += topUpAmount;
+      creditElement.innerText = credit;
+
+      topUpModal.style.display = 'none';
+    });
+
+    document.getElementById('unlimitedSpinButton').addEventListener('click', function() {
+      const creditElement = document.getElementById('credit');
+      let credit = parseInt(creditElement.innerText, 10);
+
+      if (credit <= 0) {
+        alert('POINT CREDIT LU ABIS BREE, DEPO DULU BRE BIAR BISA LANJUT !');
+        return;
+      }
+
+      document.getElementById('spinButton').disabled = true;
+      document.getElementById('playPauseButton').disabled = true;
+      document.getElementById('Deposit').disabled = true;
+      document.getElementById('topUpButton').disabled = true;
+      document.getElementById('unlimitedSpinButton').disabled = true;
+      document.getElementById('stopSpinButton').disabled = false; // Enable the stop button
+
+      unlimitedSpinInterval = setInterval(() => {
+        if (credit <= 0) {
+          clearInterval(unlimitedSpinInterval);
+          unlimitedSpinInterval = null;
+          document.getElementById('spinButton').disabled = false;
+          document.getElementById('playPauseButton').disabled = false;
+          document.getElementById('Deposit').disabled = false;
+          document.getElementById('topUpButton').disabled = false;
+          document.getElementById('unlimitedSpinButton').disabled = false;
+          document.getElementById('stopSpinButton').disabled = true; // Disable the stop button
+          return;
+        }
+
+        spinSlots(); // Call the spinSlots function
+        credit -= 1; // Deduct 1 credit for each spin
+        creditElement.innerText = credit;
+      }, 1000); // Spin every second
+    });
+
+    document.getElementById('stopSpinButton').addEventListener('click', function() {
+      if (unlimitedSpinInterval) {
+        clearInterval(unlimitedSpinInterval);
+        unlimitedSpinInterval = null;
+        document.getElementById('spinButton').disabled = false;
+        document.getElementById('playPauseButton').disabled = false;
+        document.getElementById('Deposit').disabled = false;
+        document.getElementById('topUpButton').disabled = false;
+        document.getElementById('unlimitedSpinButton').disabled = false;
+        document.getElementById('stopSpinButton').disabled = true; // Disable the stop button
+      }
+    });
+    // Info Drawer functionality
+const infoButton = document.getElementById('infoButton');
+const infoDrawer = document.getElementById('infoDrawer');
+const drawerClose = document.querySelector('.drawer-close');
+
+infoButton.addEventListener('click', function() {
+  infoDrawer.classList.toggle('open');
+});
+
+drawerClose.addEventListener('click', function() {
+  infoDrawer.classList.remove('open');
+});
+  </script>
+</body>
+</html>
